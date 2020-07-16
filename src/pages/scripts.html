@@ -1,0 +1,76 @@
+<script type="text/javascript">
+			checkBox = document.getElementById("icon-checkbox");
+			overlay = document.getElementById("overlay");
+
+				function openNav() {
+					document.getElementById("leftnav-container").style.marginLeft = "0px";
+					overlay.style.display = "block";
+					document.getElementById("sm-hdrsearch").style.display = "flex";
+					checkBox.removeAttribute("onclick");
+					checkBox.setAttribute("onclick", "closeNav()");
+				}
+
+				function closeNav() {
+					checkBox.click();
+					document.getElementById("leftnav-container").style.marginLeft = "-350px";
+					overlay.style.display = "none";
+					document.getElementById("sm-hdrsearch").style.display = "none";
+					checkBox.removeAttribute("onclick")
+					checkBox.setAttribute("onclick", "openNav()");
+				}
+
+				function downloadIcon(a) {
+					var modal = document.getElementById("modal" + a);
+					modal.style.display = "none";
+					document.getElementById("modal" + a).style.display = "flex";
+					var windowOverlay = document.getElementById("iconOverlay");
+					windowOverlay.style.display = "block";
+					windowOverlay.setAttribute("onclick", "closeModal(" + a + ")");
+					document.getElementById('download' + a).setAttribute("class", "modal-trigger selected");
+					selected.setAttribute("class", "modal-trigger");
+				};
+
+				function closeModal(a) {
+					var modal = document.getElementById("modal" + a);
+					modal.style.display = "none";
+					var iconID = document.getElementById('download' + a);
+					iconID.removeAttribute("class");
+					iconID.setAttribute("class", "modal-trigger");
+					var windowOverlay = document.getElementById("iconOverlay");
+					windowOverlay.style.display = "none";
+					windowOverlay.removeAttribute("onclick");
+				}
+
+				function searchfilter() {
+					var input, filter, table, tr, td, i, txtValue;
+					input = document.getElementById("componentinput");
+					filter = input.value.toUpperCase();
+					table = document.getElementById("statustable");
+					tr = table.getElementsByTagName("tr");
+
+					for (i = 0; i < tr.length; i++) {
+						compName = tr[i].getElementsByTagName("td")[0];
+						compStatus = tr[i].getElementsByTagName("td")[2];
+
+						if (compName || compStatus) {
+							txtValue = compName.textContent || compName.innerText || compStatus.textContent ||
+								compStatus
+								.innerText;
+							if (txtValue.toUpperCase().indexOf(filter) > -1) {
+								tr[i].style.display = "";
+							} else {
+								tr[i].style.display = "none";
+							}
+						}
+					}
+				}
+</script>
+<script src="/assets/js/example-ripple.js"></script>
+<script src="/assets/js/example-fadein.js"></script>
+<script src="/assets/js/example-slidein.js"></script>
+<script src="/assets/js/example-translatefast.js"></script>
+<script src="/assets/js/example-progressdeterminate.js"></script>
+<script src="/assets/js/example-baractive.js"></script>
+<script src="/assets/js/example-bartranslation.js"></script>
+<script src="/assets/js/example-rotate.js"></script>
+<script src="/assets/js/example-disclose.js"></script>

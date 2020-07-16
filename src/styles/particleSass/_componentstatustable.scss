@@ -1,0 +1,431 @@
+/* Search Bar */
+.top-block {
+  width: 100%;
+  height: auto;
+  align-items: center;
+  overflow-x: visible;
+  .disclaimer {
+    font-size: 14px;
+    float: right;
+    display: flex;
+  }
+  input#componentinput {
+    background-image: url(../images/search.png);
+    background-size: 18px;
+    background-position: 90% 50%;
+    background-repeat: no-repeat;
+    background-color: #fcfcfc;
+    width: 200px;
+    min-width: 100px;
+    font-size: 14px;
+    padding: 12px 20px 12px 5px;
+    border-width: 1px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    margin-bottom: 10px;
+    font-family: inherit;
+    float: left;
+
+    &:focus {
+      border-color: #000;
+      outline: none;
+    }
+
+    .table-search {
+      width: 310px;
+      border-bottom: 1px solid #d2d2d2;
+    }
+
+    .table-search .search {
+      width: 100%;
+      border: none;
+      background: transparent;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+/*   End Search     */
+
+table.component-status-table {
+  table-layout: auto;
+  width: 100%;
+  border-spacing: -1px;
+  display: inherit;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  tbody {
+    display: inherit;
+    border-color: transparent;
+
+    td {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      height: 56px;
+      -webkit-box-pack: left;
+      -ms-flex-pack: left;
+      justify-content: left;
+      font-size: 14px;
+      font-weight: 400;
+      border: 1px solid #ebedf0;
+      padding: 0 15px;
+      white-space: nowrap !important;
+      color: #70757a;
+    }
+
+    th.resource-header,
+    th.current-status,
+    th.component-name {
+      white-space: nowrap !important;
+      text-align: left;
+      padding: 0 15px;
+      border: 1px solid #ebedf0;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      height: 56px;
+      font-size: 14px;
+      margin: -1px;
+      overflow: hidden;
+      font-weight: 700;
+      color: #74797e;
+    }
+
+    .sort {
+      font-size: 9px;
+      position: absolute;
+      padding: 0 5px;
+      display: inline;
+    }
+
+    #componentAscending {
+      visibility: visible;
+      opacity: 1;
+    }
+    #statusAscending {
+      visibility: visible;
+      opacity: 0.35;
+    }
+    #componentDescending {
+      visibility: hidden;
+      opacity: 0.35;
+    }
+    #statusDescending {
+      visibility: hidden;
+      opacity: 0.35;
+    }
+
+    #statusSort,
+    #componentSort {
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    th.resource-header {
+      overflow: hidden;
+      vertical-align: middle;
+      -webkit-box-pack: left;
+      -ms-flex-pack: left;
+      justify-content: left;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    th.component-name {
+      width: 20%;
+    }
+
+    th.current-status {
+      width: 20%;
+    }
+
+    .current-status {
+      -webkit-box-align: left;
+      -ms-flex-align: left;
+      align-items: left;
+
+      &:hover {
+        cursor: default;
+      }
+      .status-tag a {
+        color: #74797e;
+        &:hover {
+          color: #19192a;
+        }
+      }
+    }
+
+    td.resources {
+      white-space: nowrap;
+      width: 800px;
+      overflow: hidden;
+      vertical-align: middle;
+      -webkit-box-pack: left;
+      -ms-flex-pack: left;
+      justify-content: left;
+      height: 56px;
+      color: #bcbcbc;
+      margin-left: -5px;
+
+      a {
+        color: #7a66ff;
+        text-decoration: none;
+        padding: 0 5px;
+      }
+    }
+
+    .component-name {
+      align-items: center;
+      color: #19212a;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      background-color: #fcfcfc;
+      width: 25%;
+      .component-text-title {
+        list-style: none;
+      }
+    }
+
+    .component-info {
+      display: inline-table;
+
+      .resources-info-icon {
+        width: 18px;
+        height: 18px;
+        padding: 2px;
+
+        &:hover .comments-right {
+          visibility: visible;
+        }
+
+        svg {
+          fill: #7a66ff;
+          position: relative;
+          top: 4px;
+        }
+      }
+    }
+
+    .comment-box {
+      background-color: white;
+      position: relative;
+      width: 400px;
+      height: auto;
+      line-height: 15px;
+      font-size: 13px;
+      z-index: 9999;
+    }
+
+    .comments-box {
+      width: 380px;
+      background-color: #fff;
+      color: #000;
+      text-align: left;
+      padding: 5px 0;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1000;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      -webkit-transition: opacity 0.3s;
+      transition: opacity 0.3s;
+    }
+
+    /* Right */
+    .comments-right:before,
+    .comments-right:after {
+      bottom: 50%;
+      left: 100%;
+    }
+
+    .comments-right:hover:before,
+    .comments-right:hover:after,
+    .comments-right:focus:before,
+    .comments-right:focus:after {
+      -webkit-transform: translateX(12px);
+      transform: translateX(12px);
+    }
+
+    /* Move directional arrows down a bit for left/right commentss */
+    .comments-right:before {
+      top: 3px;
+    }
+
+    /* Vertically center comments content for left/right commentss */
+    .comments-right:after {
+      margin-left: 0;
+      margin-bottom: -16px;
+    }
+
+    /* resources-info-icon container */
+    .resources-info-icon {
+      position: relative;
+      display: inline-block;
+
+      .comments-right {
+        visibility: hidden;
+        width: 380px;
+        background-color: #fff;
+        color: #000;
+        text-align: left;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1000;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        -webkit-transition: opacity 0.3s;
+        transition: opacity 0.3s;
+      }
+    }
+
+    /* Status Tag Styles */
+    .not-started {
+      background-color: #fde5e8;
+      border-radius: 3px;
+      color: #787777;
+      display: inline;
+      font-size: 13px;
+      padding: 4px 9px;
+    }
+
+    .under-dev {
+      background-color: #fcf7af;
+      border-radius: 3px;
+      color: #787777;
+      display: inline;
+      font-size: 13px;
+      padding: 4px 9px;
+    }
+
+    .in-design {
+      background-color: #eaf2fb;
+      border-radius: 3px;
+      color: #787777;
+      display: inline;
+      font-size: 13px;
+      padding: 4px 9px;
+    }
+
+    .design-completed {
+      background-color: #eeecff;
+      border-radius: 3px;
+      color: #787777;
+      display: inline;
+      font-size: 13px;
+      padding: 4px 9px;
+    }
+
+    .released,
+    .alpha,
+    .beta {
+      background-color: #e8f4dc;
+      border-radius: 3px;
+      color: #787777;
+      display: inline;
+      font-size: 13px;
+      padding: 4px 9px;
+    }
+  }
+}
+
+/* End Status Tag Styles */
+
+/* Sort Styles */
+button.sort {
+  font-weight: 700;
+  color: #5d6268 !important;
+  height: 56px;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  font-size: 14px;
+  border: none;
+  padding: 0px;
+  white-space: nowrap !important;
+  text-align: left;
+  font-family: inherit;
+  margin: 0px;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//sorting caret
+.caret:after {
+  content: "";
+}
+
+.asc .caret:after {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid #808080;
+  content: "";
+  position: relative;
+  top: -3px;
+  right: -4px;
+  font-size: 0;
+}
+
+.desc .caret:after {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid #808080;
+  content: "";
+  position: relative;
+  top: -4px;
+  right: -4px;
+  font-size: 0;
+}
+
+button.sort .caret {
+  display: none;
+}
+
+button.sort.asc .caret {
+  display: inline-block;
+}
+
+button.sort.desc .caret {
+  display: inline-block;
+}
+
+.sort-icon {
+  visibility: visible;
+  padding: 0 5px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+    visibility: visible;
+  }
+}
+
+.table-footer {
+  background-color: #fff;
+  margin-top: -1px;
+  position: relative;
+  z-index: -1;
+}
+
+/*   End Table Sort     */

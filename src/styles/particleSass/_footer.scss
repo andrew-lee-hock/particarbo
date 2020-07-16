@@ -1,0 +1,69 @@
+.footer-container {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+
+  .prt-footer {
+    background-color: $gray-darker;
+    display: inline-block;
+    position: relative;
+    left: 315px;
+    width: 100%;
+    top: 25vh;
+  }
+
+  .prt-footer-content {
+    color: $footer-content;
+    padding: 35px;
+    font-size: 14px;
+    margin-left: 1rem;
+
+    a {
+      color: white;
+      font-weight: 200;
+
+      &:hover {
+        color: $footer-content;
+      }
+    }
+
+    .prt-appd-logo {
+      background-image: url(/assets/img/prt-appd-logo.svg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: block;
+      height: 20px;
+      width: 170px;
+    }
+
+    ul.prt-footer-menu {
+      margin: 0;
+      // padding: 0 0 0 15%;
+      text-align: center;
+      //display: block;
+      //overflow: auto;
+
+      &:after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      li {
+        list-style: none !important;
+        text-decoration: none !important;
+        display: block;
+        float: left;
+        margin: 0.6rem 0;
+
+        a,
+        .footer-link {
+          padding: 0.3rem 2rem;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      } // end li
+    } // end ul.prt-footer-menu
+  } // end .prt-footer-content
+}

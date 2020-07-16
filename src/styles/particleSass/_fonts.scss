@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'AppDSans';
+    font-style: normal;
+    font-weight: 100;
+    src: local('AppDSans-Thin'),
+    url('#{$font_base}AppDSans-Thin.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'AppDSans';
+    font-style: normal;
+    font-weight: 200;
+    src: local('AppDSans-Light'),
+    url('#{$font_base}AppDSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'AppDSans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('AppDSans-Regular'),
+    url('#{$font_base}AppDSans-Regular.woff2') format('woff2');
+
+}
+@font-face {
+    font-family: 'AppDSans';
+    font-style: normal;
+    font-weight: 500;
+    src: local('AppDSans-Medium'),
+    url('#{$font_base}AppDSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'AppDSans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('AppDSans-Bold'),
+    url('#{$font_base}AppDSans-Bold.woff2') format('woff2');
+}
+
+@mixin particlecraft-font-light() {
+	font-family: "AppDSans" !important;
+    font-weight: 100 !important;
+}
+
+@mixin particlecraft-font-regular() {
+    font-family: "AppDSans" !important;
+    font-weight: 400 !important;
+}
+
+@mixin particlecraft-font-medium() {
+	font-family: "AppDSans" !important;
+    font-weight: 500 !important;
+}
+
+@mixin particlecraft-font-bold() {
+	font-family: "AppDSans" !important;
+    font-weight: 700 !important;
+}

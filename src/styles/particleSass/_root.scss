@@ -1,0 +1,143 @@
+//Windows Chrome hack for font weights - experiment
+* {
+  -webkit-font-smoothing: antialiased;
+  font-family: "AppDSans", Roboto, sans-serif !important;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+  color: #585e67;
+}
+.prt-container {
+  margin: 0 auto;
+  max-width: 960px;
+  line-height: 20px;
+  position: relative;
+  overflow-x: hidden;
+  min-width: 300px;
+  padding: 0 35px;
+  transition: 0.3s linear;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+a {
+  color: #585e67;
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none;
+    color: $accent;
+  }
+  &:focus {
+    box-shadow: none;
+    text-decoration: none;
+    color: white;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "AppDSans", Roboto, sans-serif;
+  color: #19192a;
+  line-height: normal;
+}
+
+h1 {
+  color: #999;
+  font-size: 52px;
+  margin-bottom: $spacer-4x;
+  margin-top: $spacer-4x;
+}
+
+h2 {
+  font-size: 42px;
+  margin-bottom: $spacer-4x;
+}
+
+h3 {
+  font-size: 20px;
+  margin-top: $spacer-4x;
+  margin-bottom: $spacer-3x;
+}
+
+hr {
+  border: 0;
+  margin: 30px 30px 0 0;
+  padding-right: 15%;
+  height: 1px;
+  background-color: #19192a;
+  color: #19192a;
+}
+
+h5,
+h6 {
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+article figure {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+article figure img {
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+.text-violet {
+  color: $violet;
+}
+
+.text-mono {
+  font-family: monospace;
+}
+
+p {
+  @include particlecraft-font-regular();
+  line-height: 25px;
+  color: $text-color;
+  max-width: $fixed-width;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale {
+  from {
+    scale: 1;
+  }
+
+  to {
+    scale: 1.5;
+  }
+}

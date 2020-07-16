@@ -1,0 +1,153 @@
+#!/bin/bash
+
+showUsage() {
+    echo "Usage: setupInstance"
+    exit 1    
+}
+
+if [ $# -ne 0 ]; then
+   showUsage
+fi
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+DATE=`date '+%Y%m%d_%H%M%S'`
+OUTPUT="particle-reactor-ec2-$DATE"
+
+SIZE="t2.micro"
+#SIZE="t2.medium"
+
+USWEST2A="subnet-bf78aef4"
+USWEST2B="subnet-628e391b"
+USWEST2C="subnet-42ab3c18"
+SSL_CERT="f2ee987e-470e-487e-b380-42bd4eae9bc5"
+AMI="ami-07a0c6e669965bb7c"
+EBS_SIZE="128"
+SECURITY_GROUP="sg-01daccd26e141a795"
+NAME="particlereactor"
+INSTANCENAME="$NAME - $DATE"
+ACCOUNT="563878036188"
+
+
+aws elbv2 create-target-group \
+    --name $NAME \
+    --protocol HTTP \
+    --port 5000 \
+    --vpc-id "vpc-4638763f" \
+    --health-check-protocol HTTP \
+    --health-check-port 5000 \
+    --health-check-enabled \
+    --health-check-path "/index.html" \
+    --health-check-interval-seconds 30 \
+    --health-check-timeout-seconds 5 \
+    --healthy-threshold-count 5 \
+    --unhealthy-threshold-count 2 \
+    | tee target-group.json
+TGARN=$(cat target-group.json | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["TargetGroups"][0]["TargetGroupArn"]')
+echo "Target group amazon resource number: $TGARN"
+
+aws elbv2 create-load-balancer \
+    --name $NAME \
+    --subnets $USWEST2A $USWEST2B \
+    --security-groups $SECURITY_GROUP \
+    --type application \
+    > load-balancer.json
+LBARN=$(cat load-balancer.json | python -c  'import json,sys;obj=json.load(sys.stdin);print obj["LoadBalancers"][0]["LoadBalancerArn"]')
+echo " Load balancer amazon resource number: $LBARN"
+
+aws elbv2 create-listener \
+    --load-balancer-arn $LBARN \
+    --protocol HTTP \
+    --port 5000 \
+    --default-actions Type=forward,TargetGroupArn=$TGARN
+
+#--------------------------------------------------------------------------------
+
+echo "[setupInstance 1] - Starting up a new image size $SIZE"
+
+# ami-07a0c6e669965bb7c - Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type
+# --block-device-mappings 'DeviceName=/dev/sda1,Ebs={VolumeSize=128}'
+
+aws ec2 run-instances \
+    --image-id $AMI \
+    --count 1 \
+    --instance-type $SIZE \
+    --block-device-mappings "DeviceName=/dev/xvda,Ebs={VolumeSize=$EBS_SIZE}" \
+    --tag-specification "ResourceType=instance,Tags=[{Key=Name,Value=$INSTANCENAME},{Key=Owner,Value=$USER}]" \
+    --security-group-ids $SECURITY_GROUP \
+    --subnet-id $USWEST2A \
+    --key-name particle-cms-1 > /tmp/$OUTPUT.json
+
+INSTANCE_ID=`cat /tmp/$OUTPUT.json | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["Instances"][0]["InstanceId"]'`
+PUBLIC_DNS=`aws ec2 describe-instances --instance-ids $INSTANCE_ID | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["Reservations"][0]["Instances"][0]["PublicDnsName"]'`
+
+STATE="unknown"
+echo -n "[setupInstance 2] - Waiting for $PUBLIC_DNS to become ready"
+while [ "$STATE" != "running" ]
+      do
+      STATE=`aws ec2 describe-instances --instance-ids $INSTANCE_ID | python -c 'import json,sys;obj=json.load(sys.stdin);print obj["Reservations"][0]["Instances"][0]["State"]["Name"]'`
+      echo -n "."
+      sleep 5
+done
+echo ". ready"
+
+echo -n "[setupInstance 3] - Waiting for login shell"
+SUCCESS=1
+while [ $SUCCESS -ne 0 ]
+do
+    sleep 5
+    echo -n "."
+    ssh -o "StrictHostKeyChecking no" -q -i ~/.ssh/particle-cms-1.pem ec2-user@"$PUBLIC_DNS" 2> /dev/null <<EOF3
+    echo "login successful"
+EOF3
+    SUCCESS=$?
+done
+
+echo "[setupInstance 4] Installing yarn and build"
+ssh -i ~/.ssh/particle-cms-1.pem ec2-user@"$PUBLIC_DNS"  <<EOF5
+echo "[setupInstance 4a] Updating yum"
+sudo yum update -y
+echo "[setupInstance 4b] Downloading nodesource"
+curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+echo "[setupInstance 4c] Installing nodejs"
+sudo yum install -y nodejs
+echo "[setupInstance 4d] Adding yarn repo"
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
+echo "[setupInstance 4e] Installing yarn"
+sudo yum install -y yarn
+mkdir ~/bin
+echo "[setupInstance 4e] Installing emacs"
+sudo yum install -y emacs
+EOF5
+
+echo "[setupInstance 5] Installing bash aliases"
+scp -i ~/.ssh/particle-cms-1.pem  $SCRIPT_DIR/../../../env/dotbash_aliases ec2-user@"$PUBLIC_DNS":.bash_aliases
+
+echo "[setupInstance 8a] Bundling app"
+/bin/rm -Rf build.tar.gz
+yarn build
+cp -R node_modules/@appd/ui-assets/inline-images build/assets
+tar -cvf build.tar build
+gzip build.tar
+echo "[setupInstance 8b] Copying distribution"
+scp -i ~/.ssh/particle-cms-1.pem build.tar.gz ec2-user@"$PUBLIC_DNS":build.tar.gz
+
+echo "[setupInstance 9] Installing the archive and starting docker services in the background"
+ssh -i ~/.ssh/particle-cms-1.pem ec2-user@"$PUBLIC_DNS"  <<EOF5
+gunzip build.tar.gz
+tar -xvf build.tar
+echo "[setupInstance 10] - Adding serve"
+yarn global add serve 
+ .yarn/bin/serve -s build &
+EOF5
+
+echo "[setupInstance Done] login to the instance:"
+echo "ssh -o \"StrictHostKeyChecking no\" -i ~/.ssh/particle-cms-1.pem ec2-user@$PUBLIC_DNS"
+
+aws elbv2 register-targets \
+    --target-group $TGARN \
+    --targets Id=$INSTANCE_ID
+
+echo $PUBLIC_DNS > ec2_host
+

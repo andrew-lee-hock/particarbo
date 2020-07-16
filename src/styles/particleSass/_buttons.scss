@@ -1,0 +1,49 @@
+.button {
+	@include particlecraft-font-medium;
+	border: solid 1.5px #585E67;
+	border-radius: 0;
+	text-decoration: none;
+
+	&.button-lg {
+		font-size: 1rem;
+		padding: .6rem 1rem;
+	}
+
+	&:hover {
+		background: #585E67;
+		border: solid 1.5px #585E67;
+		color: white;
+		text-decoration: none;
+	}
+
+	&.button-primary {
+		background: #585E67;
+		border: solid 1.5px #585E67;
+		color: white;
+
+		&:hover {
+			background: $button-color;
+			border: 1.5px solid $button-color;
+		}
+	}
+}
+
+.inline-demo-button {
+	@include particlecraft-font-medium;
+	border: solid 1.5px #585E67;
+	border-radius: 0;
+	text-decoration: none;
+	font-size: 1rem;
+	padding: .6rem 1rem;
+
+	&:hover {
+		background: #585E67;
+		border: solid 1.5px #585E67;
+		color: white;
+		text-decoration: none;
+	}
+}
+
+.button-block {
+	margin: 48px 0px;
+}

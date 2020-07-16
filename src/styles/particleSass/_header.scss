@@ -1,0 +1,218 @@
+//Main Header Container
+.prt-header-container,
+.prt-about-header-container {
+  align-items: center;
+  border-bottom: solid 1px $text-color;
+  box-sizing: border-box;
+  display: flex;
+  height: 76px;
+  position: fixed;
+  width: 100vw;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+//Main Large Screen Header (Logo and Top Nav)
+.prt-header,
+.prt-about-header {
+  width: 100%;
+  display: inline-flex;
+}
+
+#standard.prt-logo,
+#about.prt-logo {
+  background-image: url(/images/prt-header-logo-white.svg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-left: 35px;
+  height: 30px;
+  width: 170px;
+}
+
+#after.prt-logo {
+  background-image: url(/images/prt-header-logo-white.svg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-left: 35px;
+  height: 30px;
+  width: 170px;
+}
+
+#particle.prt-logo {
+  background-image: url(/images/prt-header-logo-white.svg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-left: 25px;
+  height: 30px;
+  width: 115px;
+  background-position-x: right;
+}
+
+//Navigation (right side within the header)
+.prt-header-nav {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  right: 97px;
+  z-index: 850;
+  top: 0;
+
+  .nav-item {
+    align-items: center;
+    color: white;
+    display: flex;
+    font-weight: 500;
+    font-size: 14px;
+    height: 75px;
+    justify-content: center;
+    letter-spacing: 1.1px;
+    width: 138px;
+    text-decoration: none !important;
+
+    &:hover {
+      color: black;
+      font-weight: 700;
+    }
+  }
+
+  .selected,
+  .nav-item-active {
+    align-items: center;
+    background-color: white;
+    color: $link;
+    display: flex;
+    font-weight: 700;
+    font-size: 14px;
+    height: 75px;
+    justify-content: center;
+    letter-spacing: 1.1px;
+    width: 138px;
+    text-decoration: none !important;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+//Header Search Feature
+.prt-hdr-search {
+  width: 97px;
+  display: flex;
+  right: 5px;
+  position: fixed;
+  justify-content: center;
+  top: 26px;
+  z-index: 900;
+
+  input {
+    font-size: 16x;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+
+  .search-container {
+    width: 26px;
+    height: 24px;
+    z-index: 900;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .search {
+    position: absolute;
+    outline: none;
+    border: none;
+    height: 25px;
+    width: 0;
+    transition-duration: 0.2s;
+    -webkit-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
+    z-index: 900;
+    background-color: transparent;
+
+    &:focus {
+      height: 25px;
+      text-decoration: none;
+    }
+  }
+
+  .expandright {
+    right: 38px;
+    top: 0;
+    position: absolute;
+    width: 0px;
+    z-index: 800;
+
+    &:focus {
+      font-size: 14px;
+      width: 450px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #7a66ff;
+      outline-offset: 0.75px;
+      outline: 24.6px solid white;
+      background-color: white;
+    }
+  }
+
+  .button {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    color: #DBDFE2;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .searchbutton {
+    width: 20px;
+    height: 18px;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border-style: none !important;
+    z-index: 850;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .search:focus + .searchbutton {
+    transition-duration: 0.2s;
+    color: #DBDFE2;
+  }
+}
+
+//Medium to Small Screen Header (Collapsed Left Nav)
+.prt-minified-headernav,
+.prt-about-minified-headernav {
+  align-items: center;
+  justify-content: left;
+  margin: 0;
+  padding: 0;
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  width: 315px;
+  height: 75px;
+  display: none;
+}
+
+.headernav-container {
+  z-index: 800;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}

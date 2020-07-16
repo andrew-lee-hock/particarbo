@@ -1,0 +1,22 @@
+.particle-styles-table {
+    width: 100%;
+    max-width: 740px;
+    border: 1px solid #DBDFE2;
+    td, th {
+        border-left: 0px solid #DBDFE2;
+    }
+    .particle-tag-name-column {
+        width: 150px;
+        padding: 0px 24px;
+        text-transform: uppercase;
+    }
+    .particle-info-column {
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid #DBDFE2;
+        padding: 12px 24px;
+    }
+    .particle-styles-row-description {
+        color: white;
+    }
+}

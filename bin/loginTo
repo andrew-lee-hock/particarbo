@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+if [ $# -eq 1 ]; then
+    PARTICLECMS_EC_HOST=$1
+elif [ -z "$PARTICLECMS_EC_HOST" ]; then
+    PARTICLECMS_EC_HOST=`cat $SCRIPT_DIR/../config/particle.appdynamics.com`    
+fi
+
+ssh -o "StrictHostKeyChecking no" -i ~/.ssh/particle-cms-1.pem ec2-user@"$PARTICLECMS_EC_HOST"

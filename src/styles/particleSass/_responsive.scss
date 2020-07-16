@@ -1,0 +1,565 @@
+// 1480 and larger
+@media #{$xlarge-screen} {
+  .prt-about-minified-headernav {
+    visibility: hidden;
+  }
+  #leftnav-container {
+    margin-left: 0px;
+  }
+  #small.menu-III,
+  .prt-hdr-search {
+    display: none;
+  }
+  .prt-leftnav-menu {
+    padding-top: 0px;
+  }
+
+  #about-headernav {
+    display: none;
+  }
+}
+
+// 1280 - 1480
+@media #{$large-screen} {
+
+.component {
+  padding-right: 25% !important;
+  width: 100% !important;
+  transition: 0.3s linear;
+}
+  hr {
+    margin-right: 15%;
+  }
+
+  .page-section {
+    width: 100%;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    overflow: hidden;
+  }
+
+  .prt-about-minified-headernav {
+    visibility: hidden;
+  }
+  #leftnav-container > .prt-leftnav-container {
+    width: 315px;
+    margin-left: -350px;
+    top: 0;
+    padding: 0;
+    height: 100vh;
+    position: fixed;
+
+    #small.menu-III,
+    .prt-hdr-search {
+      display: none;
+    }
+    .prt-leftnav-menu {
+      padding-top: 0px;
+    }
+
+    #about-headernav {
+      display: none;
+    }
+
+    .footer-container.prt-footer {
+      margin: 0 auto;
+      left: 0px;
+      width: 100vw;
+
+      .prt-footer-content {
+        ul .prt-footer-menu {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+// 960 - 1280
+@media #{$medium-screen} {
+  #particle.prt-logo,
+  #standard.prt-logo {
+    display: none;
+  }
+  #headernav {
+    display: inline-flex;
+    transition: 0.3s linear;
+  }
+  body #leftnav-container.prt-leftnav-container {
+    width: 315px;
+    margin-left: -350px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    position: fixed;
+    background-color: white;
+  }
+  .anchor-container {
+    right: -15% !important;
+    margin-right: 6% !important;
+    transform: scale(.99);
+  }
+  .prt-container {
+    margin-left: 0;
+  }
+  .component {
+    margin: 0;
+    
+  }
+  body .download-modal {
+    position: fixed;
+    bottom: 0;
+    height: 75px;
+    width: 100vw;
+    box-shadow: 5px 0 15px 0 #0000004c;
+    z-index: 999;
+    left: 0;
+
+    .icon-preview {
+      height: 75px;
+      background-image: url(/assets/img/alpha.jpg);
+      background-size: contain;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .download-modal-preview {
+        width: 60%;
+        height: 60%;
+        fill: #585e67;
+      }
+    }
+
+    .icon-info {
+      height: 100%;
+      background-color: #1b2129;
+      display: flex;
+      width: 70vw;
+      align-items: center;
+      margin: 0 auto;
+
+      .icon-file-name,
+      .icon-class-name {
+        text-overflow: ellipsis;
+        padding: 0 10px;
+        color: white;
+        font-size: 16px;
+        font-weight: 200;
+        display: flex;
+        justify-content: center;
+        text-align: left;
+        width: auto;
+        flex-direction: column;
+        line-height: 20px;
+        white-space: nowrap;
+      }
+
+      .divider {
+        display: inline-flex;
+        height: 50px;
+        width: 2px;
+        stroke: #888;
+        stroke-width: 2px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .download-container {
+      background-color: #7767f6;
+      padding: 10px 25px;
+      height: 60px;
+      border: none;
+      outline: none;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      max-width: 25vw;
+      min-width: 15vw;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+  }
+  footer.footer-container .prt-footer {
+    left: -10px;
+    width: 110vw;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// 640-960
+@media #{$small-screen} {
+  .anchor-container {
+    right: -20% !important;
+    margin-right: 5% !important;
+  }
+  
+  .top-block .disclaimer {
+    float: left !important;
+    font-size: 14px;
+    margin-left: 0 !important;
+  }
+  body .download-modal {
+    /* display: none; */
+    flex-direction: column;
+    position: fixed;
+    margin: 0 auto;
+    bottom: 0px;
+    height: auto;
+    width: 100%;
+    /* overflow: visible; */
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    box-shadow: 0 5px 15px 0 #0000004c;
+    z-index: 650;
+
+    .icon-preview {
+      width: 100%;
+      height: 100px;
+      background-image: url(/assets/img/alpha.jpg);
+      background-size: contain;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .download-modal-preview {
+        width: 60%;
+        height: 60%;
+        fill: #585e67;
+      }
+    }
+
+    .icon-info {
+      background-color: #1b2129;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      height: 60px;
+      width: 100vw;
+
+      .icon-file-name,
+      .icon-class-name {
+        margin: 0 5px;
+        color: white;
+        font-size: 16px;
+        font-weight: 200;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: auto;
+        flex-direction: column;
+        line-height: 20px;
+        white-space: nowrap;
+
+        .subtitle,
+        .title {
+          text-align: center;
+        }
+      }
+
+      .divider {
+        display: inline-flex;
+        height: 100%;
+        width: 2px;
+        stroke: #888;
+        stroke-width: 2px;
+        margin-bottom: 0px;
+      }
+    }
+
+    .download-container {
+      background-color: #7767f6;
+      padding: 10px 35px;
+      height: 40px;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      justify-content: center;
+      width: 100%;
+      min-width: 100vw;
+      white-space: nowrap;
+
+      .icon-download {
+        font-size: 16px;
+      }
+    }
+  }
+  #small.menu-III {
+    display: none;
+  }
+  #hdrsearch .expandright:focus {
+    width: 300px;
+  }
+  .prt-about-header-container {
+    display: flex;
+  }
+  .prt-leftnav-container {
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+  }
+  .prt-about-minified-headernav {
+    visibility: visible !important;
+    display: flex !important;
+    position: fixed !important;
+  }
+  #particle.prt-logo,
+  #standard.prt-logo,
+  #about.prt-logo {
+    display: none;
+  }
+  #after.prt-logo {
+    display: relative;
+  }
+  #headernav,
+  #about-headernav {
+    display: flex;
+    transition: 0.3s linear;
+    position: block;
+  }
+  #accordion {
+    padding-top: 76px;
+  }
+  #leftnav-container #leftnav #xs-topnav {
+    visibility: visible !important;
+  }
+  .prt-hdr-search-xs {
+    width: 97px;
+    display: flex;
+    right: 0;
+    position: fixed;
+    justify-content: center;
+    top: 26px;
+  }
+  #topnav,
+  #xs-close,
+  .close,
+  .open {
+    display: none;
+    width: 0;
+  }
+  .description-image {
+    margin-bottom: 0 !important;
+
+    .prt-appd-logo {
+      display: none;
+    }
+
+    .prt-footer {
+      width: 100vw;
+    }
+  }
+  footer.footer-container .prt-footer {
+    display: inline-flex;
+    justify-content: center;
+  }
+}
+// The left nav should be tucked away in an off-canvas menu, while
+// the right nav should be embedded inside the content column.
+// 465px - 640px
+@media #{$xsmall-screen} {
+  .prt-hdr-search {
+    display: none;
+  }
+
+  #hdrsearch .expandright:focus {
+    width: 150px;
+  }
+
+  .prt-about-header-container {
+    display: flex;
+  }
+
+  .prt-about-minified-headernav {
+    visibility: visible !important;
+  }
+
+  hr.description-hr {
+    display: block !important;
+  }
+
+  .prt-header-nav,
+  .prt-hdr-search {
+    display: none;
+  }
+
+  .particle-landing-page .landing-header .logo {
+    margin-right: 0 !important;
+  }
+
+  #about,
+  #after.prt-logo,
+  #standard.prt-logo {
+    display: none;
+  }
+
+  #particle.prt-logo {
+    display: flex;
+  }
+
+  .prt-leftnav-container {
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+  }
+
+  .download-container {
+    width: 100vw;
+    min-width: 100vw;
+  }
+
+  .download-modal .icon-download {
+    font-size: 16px;
+    width: 100vw;
+    text-align: center;
+    padding: 0 10px;
+    margin-left: 35px;
+  }
+
+  body .download-modal .icon-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    height: 140px;
+    align-items: center;
+    margin: 0 auto;
+    min-width: 100vw;
+    width: 100vw;
+
+    .divider {
+      display: none;
+    }
+
+    .icon-file-name,
+    .icon-class-name {
+      font-size: 12px;
+      justify-content: left;
+      text-align: center;
+      width: auto;
+      line-height: 25px;
+      white-space: nowrap;
+      padding: 0 10px;
+    }
+  }
+
+  #normal.menu-III {
+    display: block;
+  }
+
+  #small.menu-III {
+    display: none;
+  }
+
+  .prt-hdr-search .expandright:focus {
+    width: 120px !important;
+  }
+
+  #smhdrsearch.search-container {
+    overflow-x: visible;
+
+    .prt-icon-search {
+      overflow-x: visible;
+    }
+  }
+
+  #particle.prt-logo {
+    margin-left: 25px !important;
+  }
+
+  .backslash {
+    margin-left: 100px;
+  }
+
+  .prt-minified-headernav {
+    z-index: 500;
+  }
+
+  #xs-topnav {
+    display: inline-flex;
+    position: absolute;
+    width: 100%;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #19192a;
+    background-color: white;
+  }
+
+  .prt-hdr-search {
+    width: 97px;
+    display: flex;
+    right: 0;
+    position: fixed;
+    justify-content: center;
+    top: 26px;
+  }
+
+  .prt-leftnav-container {
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+  } 
+
+  .component {
+    margin-top: 55px;
+    padding: 0px !important;
+    margin-right: 0px !important;
+    width: 75% !important;
+  }
+
+  .prt-appd-logo {
+    display: none;
+  }
+
+  body .anchor-container {
+    right: -25% !important;
+    margin-right: 4% !important;
+    transform: scale(.9);
+    top: 90px;
+    padding: 6px;
+    background-color: rgba(255, 255, 255, .8);
+  }
+}
+
+// 375px - 464px
+@media #{$xxsmall-screen} {
+  html {
+    transform: scale(.97);
+  }
+  body .anchor-container {
+    right: -26%;
+    position: fixed;
+  }
+  .download-modal {
+    margin-left: -35px;
+
+    .icon-info .icon-file-name,
+    .icon-info .icon-download {
+      max-width: 70vw;
+      overflow-x: visible;
+      width: 100vw;
+      font-size: 11px;
+      transform: scale(0.98);
+    }
+  }
+
+  .download-container {
+    width: 100%;
+    min-width: 100vw;
+    margin-left: -35px;
+  }
+
+  .component {
+    display: contents;
+    margin-top: 55px;
+    padding-right: 40% !important;
+  }
+
+  .icon-category-section {
+    justify-content: center;
+  }
+}
