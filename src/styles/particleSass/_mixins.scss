@@ -1,26 +1,26 @@
 @mixin image-border() {
     border-style: solid;
-    border-color: $image-border-color;
+    border-color: $border-color;
     border-width: 1px;
 }
 
 @mixin do-image-border() {
     border-bottom: 4px solid $do-green;
-    border-top: 1px solid $image-border-color;
-    border-left: 1px solid $image-border-color;
-    border-right: 1px solid $image-border-color;
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
 }
 @mixin caution-image-border() {
     border-bottom: 4px solid #FF7F32;
-    border-top: 1px solid $image-border-color;
-    border-left: 1px solid $image-border-color;
-    border-right: 1px solid $image-border-color;
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
 }
 @mixin dont-image-border() {
     border-bottom: 4px solid $dont-red;
-    border-top: 1px solid $image-border-color;
-    border-left: 1px solid $image-border-color;
-    border-right: 1px solid $image-border-color;
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
 }
 
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {

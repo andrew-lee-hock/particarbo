@@ -1,5 +1,5 @@
-$image_base: './images';
-$font_base: './fonts/';
+$image_base: '/images';
+$font_base: '/fonts';
 /* Fonts and font mixins */
 @import "particleSass/variables";
 @import "particleSass/fonts";

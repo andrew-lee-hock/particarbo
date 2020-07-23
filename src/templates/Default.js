@@ -18,7 +18,7 @@ const Default = ({ pageContext, children, location, Title }) => {
   const {
     site: { pathPrefix },
   } = useStaticQuery(graphql`
-    query PATH_PREFIX_QUERY {
+    query PREFIX {
       site {
         pathPrefix
       }
