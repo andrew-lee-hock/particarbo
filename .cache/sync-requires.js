@@ -49,6 +49,7 @@ exports.components = {
   "component---src-pages-layout-npm-scripts-mdx": hot(preferDefault(require("/Users/andrew.hock/particarbo/src/pages/layout/npm-scripts.mdx"))),
   "component---src-pages-layout-shadowing-mdx": hot(preferDefault(require("/Users/andrew.hock/particarbo/src/pages/layout/shadowing.mdx"))),
   "component---src-pages-layout-styling-mdx": hot(preferDefault(require("/Users/andrew.hock/particarbo/src/pages/layout/styling.mdx"))),
+  "component---src-pages-overview-mdx": hot(preferDefault(require("/Users/andrew.hock/particarbo/src/pages/overview.mdx"))),
   "component---src-pages-test-spacing-audit-mdx": hot(preferDefault(require("/Users/andrew.hock/particarbo/src/pages/test/spacing-audit.mdx")))
 }
 

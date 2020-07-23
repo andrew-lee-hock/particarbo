@@ -46,6 +46,7 @@ exports.components = {
   "component---src-pages-layout-npm-scripts-mdx": () => import("./../../src/pages/layout/npm-scripts.mdx" /* webpackChunkName: "component---src-pages-layout-npm-scripts-mdx" */),
   "component---src-pages-layout-shadowing-mdx": () => import("./../../src/pages/layout/shadowing.mdx" /* webpackChunkName: "component---src-pages-layout-shadowing-mdx" */),
   "component---src-pages-layout-styling-mdx": () => import("./../../src/pages/layout/styling.mdx" /* webpackChunkName: "component---src-pages-layout-styling-mdx" */),
+  "component---src-pages-overview-mdx": () => import("./../../src/pages/overview.mdx" /* webpackChunkName: "component---src-pages-overview-mdx" */),
   "component---src-pages-test-spacing-audit-mdx": () => import("./../../src/pages/test/spacing-audit.mdx" /* webpackChunkName: "component---src-pages-test-spacing-audit-mdx" */)
 }
 
