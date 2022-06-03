@@ -21,7 +21,7 @@
     "core-js": "^3.6.5",
     "gatsby": "^2.24.2",
     "gatsby-cli": "^2.12.60",
-    "gatsby-plugin-mdx": "^1.2.25",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-theme-carbon": "^1.22.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
